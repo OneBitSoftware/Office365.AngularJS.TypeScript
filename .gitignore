@@ -25,6 +25,10 @@ bld/
 .vs/
 # Uncomment if you have tasks that create the project's static files in wwwroot
 wwwroot/
+bower_components
+
+# Removing typescript generated files
+Scripts/app/*.js
 
 # MSTest test Results
 [Tt]est[Rr]esult*/
