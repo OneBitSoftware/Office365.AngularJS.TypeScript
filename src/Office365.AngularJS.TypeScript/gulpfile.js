@@ -1,4 +1,5 @@
-﻿/*
+﻿/// <binding AfterBuild='index' />
+/*
 This file in the main entry point for defining Gulp tasks and using Gulp plugins.
 Click here to learn more. http://go.microsoft.com/fwlink/?LinkId=518007
 */
@@ -199,7 +200,7 @@ gulp.task('copy-external-js', ['clean-scripts'], function () {
 gulp.task('copy-external-css', ['transform-less'], function () {
     //Add any external styles here
     var externalStyles = [
-        //'Styles/External/**/*.*' //sample path to all external styles
+        'bower_components/bootstrap/dist/css/bootstrap.min.css' //sample path to all external styles
     ];
 
     //Add any external fonts here
@@ -208,12 +209,12 @@ gulp.task('copy-external-css', ['transform-less'], function () {
     //    .pipe(gulp.dest(paths.dest.styles + '/fonts'));
 
     return gulp.src(externalStyles)
-        .pipe(gulp.dest(config.paths.dest.externalCSS));
+        .pipe(gulp.dest(config.paths.dest.externalCSS)).pipe(print());
 });
 
 
 function prepareTemplates() {
     return gulp.src(config.paths.source.angularHtmlFiles)
         .pipe(minifyHtml())
-        .pipe(angularTemplateCache({ standalone: true }));
+        .pipe(angularTemplateCache({ standalone: false, module: 'Office365DemoApp' }));
 }
