@@ -11,11 +11,14 @@
 
 </head>
 <body>
-    <div ng-app="Office365DemoApp">
+    <div ng-app="Office365DemoApp" class="ms-font-m">
         <top-menu></top-menu>
-        <div ui-view></div>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div ui-view></div>
+            </div>
+        </div>
     </div>
-
     <!-- externals:js -->
     <!-- endinject -->
     <!-- inject:js -->

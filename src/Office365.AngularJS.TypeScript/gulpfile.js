@@ -113,8 +113,9 @@ gulp.task('bundle-scripts', ['ts-lint', 'gen-ts-refs', 'copy-external-css', 'cop
         .pipe(gulpif(
             config.environment.isDevelopment(),     //if in development
             sourcemaps.write('./')))                //finish sources
-        .pipe(gulp.dest(config.paths.dest.src))
-        .pipe(print());    //output to target dest
+        .pipe(gulp.dest(config.paths.dest.src))     //output to target dest
+        //.pipe(print())
+    ;    
 });
 
 //Inject required JS and CSS files in _Layout.cshtml
@@ -180,6 +181,9 @@ gulp.task('copy-external-js', ['clean-scripts'], function () {
            'bower_components/angular-ui-router/release/angular-ui-router.js',
            'bower_components/angular-bootstrap/ui-bootstrap.js',
            'bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
+           'bower_components/office-ui-fabric/dist/js/jquery.fabric.js',
+           'bower_components/adal-angular/dist/adal.min.js',
+           'bower_components/adal-angular/dist/adal-angular.min.js',
         ];
     }
     else {
@@ -189,18 +193,22 @@ gulp.task('copy-external-js', ['clean-scripts'], function () {
            'bower_components/angular-ui-router/release/angular-ui-router.min.js',
            'bower_components/angular-bootstrap/ui-bootstrap.min.js',
            'bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js',
+           'bower_components/office-ui-fabric/dist/js/jquery.fabric.min.js',
+           'bower_components/adal-angular/dist/adal.min.js',
+           'bower_components/adal-angular/dist/adal-angular.min.js',
         ];
     }
 
     return gulp.src(externalJs)
-        .pipe(gulp.dest(config.paths.dest.externalJS));
+        .pipe(gulp.dest(config.paths.dest.externalJS)).pipe(print());
 });
 
 //Copy required external CSS files to wwwroot
 gulp.task('copy-external-css', ['transform-less'], function () {
     //Add any external styles here
     var externalStyles = [
-        'bower_components/bootstrap/dist/css/bootstrap.min.css' //sample path to all external styles
+        'bower_components/bootstrap/dist/css/bootstrap.min.css', //sample path to all external styles
+        'bower_components/office-ui-fabric/dist/css/fabric.min.css',
     ];
 
     //Add any external fonts here
@@ -209,7 +217,7 @@ gulp.task('copy-external-css', ['transform-less'], function () {
     //    .pipe(gulp.dest(paths.dest.styles + '/fonts'));
 
     return gulp.src(externalStyles)
-        .pipe(gulp.dest(config.paths.dest.externalCSS)).pipe(print());
+        .pipe(gulp.dest(config.paths.dest.externalCSS));
 });
 
 

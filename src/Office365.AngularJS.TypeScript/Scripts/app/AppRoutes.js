@@ -10,9 +10,18 @@ var Office365DemoApp;
                 url: '/home',
                 templateUrl: 'views/home.html'
             })
+                .state('emails', {
+                url: '/emails',
+                templateUrl: 'views/emails.html'
+            })
+                .state('sharepoint', {
+                url: '/sharepoint',
+                templateUrl: 'views/sharepoint.html'
+            })
                 .state('files', {
                 url: '/files',
-                templateUrl: 'views/files.html'
+                templateUrl: 'views/files.html',
+                controller: Office365DemoApp.Controllers.FilesController
             });
             //Default redirect route if non of the above match
             $urlRouterProvider.otherwise('/home');

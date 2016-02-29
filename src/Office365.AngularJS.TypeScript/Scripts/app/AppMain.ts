@@ -10,7 +10,7 @@ module Office365DemoApp {
 
         constructor() {
 
-            this.app = angular.module("Office365DemoApp", ['ui.router', 'ui.bootstrap']);
+            this.app = angular.module("Office365DemoApp", ['ui.router', 'ui.bootstrap', 'AdalAngular']);
 
             //Configure app routes
             this.app.config(['$stateProvider', '$urlRouterProvider',
@@ -24,7 +24,9 @@ module Office365DemoApp {
                 console.log('Running...');
             }]);
 
+            //Set up directives, factories and services
             this.app.directive('topMenu', Directives.TopMenu.factory());
+            this.app.service('fileService', () => new Services.FileService());
         }
     }
 

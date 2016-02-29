@@ -1,13 +1,13 @@
-﻿<nav class="navbar navbar-default">
+﻿<nav class="navbar navbar-default ms-NavBar">
     <div class="container-fluid">
         <div class="navbar-header">
             <a class="navbar-brand" href="#">Office 365 AngularJS TypeScript Demo</a>
         </div>
-        <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#">Files</a></li>
-            <li><a href="#">E-mails</a></li>
-            <li><a href="#">SharePoint Lists</a></li>
+        <ul class="nav navbar-nav ms-NavBar-items">
+            <li ui-sref-active="active" class="ms-NavBar-item"><a ui-sref="home">Home</a></li>
+            <li ui-sref-active="active" class="ms-NavBar-item"><a ui-sref="files">Files</a></li>
+            <li ui-sref-active="active" class="ms-NavBar-item"><a ui-sref="emails">E-mails</a></li>
+            <li ui-sref-active="active" class="ms-NavBar-item"><a ui-sref="sharepoint">SharePoint Lists</a></li>
         </ul>
     </div>
 </nav>

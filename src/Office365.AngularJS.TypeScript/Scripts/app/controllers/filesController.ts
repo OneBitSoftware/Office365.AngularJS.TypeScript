@@ -4,15 +4,16 @@
     export class FilesController {
 
         private files: File[];
+        private filesService: Interfaces.IFileService;
 
-        constructor() {
+        static $inject = ['fileService'];
 
-            alert('got file222s!');
-
+        constructor(injectedFilesService: Interfaces.IFileService) {
+            this.filesService = injectedFilesService;
         }
 
-        GetFiles() {
-            alert('got files!');
+        getFiles = () => {
+            this.files = this.filesService.getFiles();
         }
     }
 }

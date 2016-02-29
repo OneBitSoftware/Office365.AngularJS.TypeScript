@@ -6,7 +6,7 @@ var Office365DemoApp;
     'use strict';
     var AppMain = (function () {
         function AppMain() {
-            this.app = angular.module("Office365DemoApp", ['ui.router', 'ui.bootstrap']);
+            this.app = angular.module("Office365DemoApp", ['ui.router', 'ui.bootstrap', 'AdalAngular']);
             //Configure app routes
             this.app.config(['$stateProvider', '$urlRouterProvider',
                 function ($stateProvider, $urlRouterProvider) {
@@ -18,6 +18,7 @@ var Office365DemoApp;
                     console.log('Running...');
                 }]);
             this.app.directive('topMenu', Office365DemoApp.Directives.TopMenu.factory());
+            this.app.service('fileService', function () { return new Office365DemoApp.Services.FileService(); });
         }
         return AppMain;
     })();
