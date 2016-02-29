@@ -181,9 +181,9 @@ gulp.task('copy-external-js', ['clean-scripts'], function () {
            'bower_components/angular-ui-router/release/angular-ui-router.js',
            'bower_components/angular-bootstrap/ui-bootstrap.js',
            'bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
-           'bower_components/office-ui-fabric/dist/js/jquery.fabric.js',
            'bower_components/adal-angular/dist/adal.min.js',
            'bower_components/adal-angular/dist/adal-angular.min.js',
+           "bower_components/angular-ui-grid/ui-grid.min.js",
         ];
     }
     else {
@@ -193,9 +193,9 @@ gulp.task('copy-external-js', ['clean-scripts'], function () {
            'bower_components/angular-ui-router/release/angular-ui-router.min.js',
            'bower_components/angular-bootstrap/ui-bootstrap.min.js',
            'bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js',
-           'bower_components/office-ui-fabric/dist/js/jquery.fabric.min.js',
            'bower_components/adal-angular/dist/adal.min.js',
            'bower_components/adal-angular/dist/adal-angular.min.js',
+           "bower_components/angular-ui-grid/ui-grid.min.js",
         ];
     }
 
