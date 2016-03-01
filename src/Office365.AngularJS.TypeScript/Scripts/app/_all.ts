@@ -1,5 +1,9 @@
 //{
 
+/// <reference path="AdalManager.ts" />
+
+/// <reference path="adalSettings.ts" />
+
 /// <reference path="AppMain.ts" />
 
 /// <reference path="AppRoutes.ts" />

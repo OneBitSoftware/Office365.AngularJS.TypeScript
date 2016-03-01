@@ -2,7 +2,6 @@
     'use strict';
 
     export interface IAzureADEndpoints {
-        url: string;
-        key: string;
+
     }
 }

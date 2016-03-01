@@ -209,6 +209,7 @@ gulp.task('copy-external-css', ['transform-less'], function () {
     var externalStyles = [
         'bower_components/bootstrap/dist/css/bootstrap.min.css', //sample path to all external styles
         'bower_components/office-ui-fabric/dist/css/fabric.min.css',
+        "bower_components/angular-ui-grid/ui-grid.min.css"
     ];
 
     //Add any external fonts here

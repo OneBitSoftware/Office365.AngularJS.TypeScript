@@ -2,7 +2,10 @@
     'use strict';
 
     export class Routes {
-        static configure($stateProvider: angular.ui.IStateProvider, $urlRouterProvider: angular.ui.IUrlRouterProvider) {
+        static configure(
+            $stateProvider: angular.ui.IStateProvider,
+            $urlRouterProvider: angular.ui.IUrlRouterProvider,
+            adalProvider) {
 
             $stateProvider
                 .state('home', {

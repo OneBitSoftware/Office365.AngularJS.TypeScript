@@ -4,7 +4,7 @@ var Office365DemoApp;
     var Routes = (function () {
         function Routes() {
         }
-        Routes.configure = function ($stateProvider, $urlRouterProvider) {
+        Routes.configure = function ($stateProvider, $urlRouterProvider, adalProvider) {
             $stateProvider
                 .state('home', {
                 url: '/home',
@@ -21,7 +21,8 @@ var Office365DemoApp;
                 .state('files', {
                 url: '/files',
                 templateUrl: 'views/files.html',
-                controller: Office365DemoApp.Controllers.FilesController
+                controller: Office365DemoApp.Controllers.FilesController,
+                controllerAs: 'ctrl'
             });
             //Default redirect route if non of the above match
             $urlRouterProvider.otherwise('/home');
