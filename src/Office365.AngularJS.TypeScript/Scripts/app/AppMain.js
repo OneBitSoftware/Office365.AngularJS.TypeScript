@@ -8,7 +8,7 @@ var Office365DemoApp;
         function AppMain() {
             this.app = angular.module("Office365DemoApp", ['ui.router', 'ui.bootstrap', 'AdalAngular', 'ui.grid']);
             //Configure app routes
-            this.app.config(['$stateProvider', '$urlRouterProvider', '$httpProvider', 'adalProvider', 'adalSettings',
+            this.app.config(['$stateProvider', '$urlRouterProvider', '$httpProvider', 'adalSettings', 'adalAuthenticationServiceProvider',
                 function ($stateProvider, $urlRouterProvider, $httpProvider, adalSettings, adalProvider) {
                     Office365DemoApp.Routes.configure($stateProvider, $urlRouterProvider, adalProvider);
                     //set up adal
@@ -21,7 +21,21 @@ var Office365DemoApp;
                 }]);
             //Set up directives, factories and services
             this.app.directive('topMenu', Office365DemoApp.Directives.TopMenu.factory());
-            this.app.service('fileService', function () { return new Office365DemoApp.Services.FileService(); });
+            this.app.service('fileService', Office365DemoApp.Services.FileService);
+            var settings = {
+                tenant: 'onebit101.onmicrosoft.com',
+                clientId: '12929f32-09c5-46df-a948-b59bc7cf7067',
+                azureAdEndpoints: {
+                    // sharepoint site containing lists
+                    'https://onebit101.sharepoint.com/sites/dev/_api/': 'https://onebit101.sharepoint.com',
+                    "https://onebit101-my.sharepoint.com/_api/v1.0/me/files/root/children": "https://onebit101-my.sharepoint.com",
+                    // MS Graph API
+                    'https://graph.microsoft.com/v1.0/me': 'https://graph.microsoft.com/'
+                },
+                baseSPUrl: 'https://onebit101.sharepoint.com/sites/dev/_api/',
+                baseOneDriveUrl: 'https://onebit101-my.sharepoint.com/_api/v1.0/me/',
+            };
+            this.app.constant('adalSettings', settings);
         }
         return AppMain;
     })();

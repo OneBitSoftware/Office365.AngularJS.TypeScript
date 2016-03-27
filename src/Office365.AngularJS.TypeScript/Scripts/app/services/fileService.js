@@ -4,21 +4,34 @@ var Office365DemoApp;
     (function (Services) {
         'use strict';
         var FileService = (function () {
-            function FileService() {
+            function FileService($http, $q, adalSettings) {
+                this.$http = $http;
+                this.$q = $q;
+                this.adalSettings = adalSettings;
+                this.getOptions = {
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                };
                 this.files = [];
-                //Temp data
-                var file1 = new Office365DemoApp.File();
-                file1.filename = "filename1";
-                var file2 = new Office365DemoApp.File();
-                file2.filename = "filename2";
-                this.files.push(file2);
-                var file3 = new Office365DemoApp.File();
-                file3.filename = "filename3";
-                this.files.push(file3);
             }
             FileService.prototype.getFiles = function () {
+                var _this = this;
+                var endpoint = 'https://onebit101-my.sharepoint.com/_api/v1.0/me/files/root/children';
+                this.$http.get(endpoint).then(function (result) {
+                    var resultItems = result.data.value;
+                    for (var i in resultItems) {
+                        var newFile = new Office365DemoApp.File();
+                        newFile.filename = resultItems[i].name;
+                        _this.files.push(newFile);
+                    }
+                }, function (error) {
+                    console.log(error);
+                    alert(error);
+                });
                 return this.files;
             };
+            FileService.$inject = ['$http', '$q', 'adalSettings'];
             return FileService;
         })();
         Services.FileService = FileService;

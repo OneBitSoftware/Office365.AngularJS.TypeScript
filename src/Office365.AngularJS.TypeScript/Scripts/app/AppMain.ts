@@ -24,7 +24,7 @@ module Office365DemoApp {
                     Routes.configure($stateProvider, $urlRouterProvider, adalProvider);
 
                     //set up adal
-                    //AdalManager.configure($httpProvider, adalSettings, adalProvider);
+                    AdalManager.configure($httpProvider, adalSettings, adalProvider);
 
                 }
             ]);
@@ -36,19 +36,21 @@ module Office365DemoApp {
 
             //Set up directives, factories and services
             this.app.directive('topMenu', Directives.TopMenu.factory());
-            this.app.service('fileService', () => new Services.FileService());
+            this.app.service('fileService', Services.FileService);
 
             var settings: Interfaces.IAdalSettings = {
-                tenant: '0534985e-032e-430a-9b95-60f5277b96f4', //Update with your tenant ID
-                clientId: 'b01e72a7-6017-4cf0-b16a-e032f6c869c4', //Update with your client ID
+                tenant: 'onebit101.onmicrosoft.com', 
+                clientId: 'ENTER ID HERE',
                 azureAdEndpoints: {
                     // sharepoint site containing lists
-                    'https://cand3.sharepoint.com/sites/ChadDev/ExpenseApp/_api/': 'https://cand3.sharepoint.com',
+                    'https://onebit101.sharepoint.com/sites/dev/_api/': 'https://onebit101.sharepoint.com',
+                    //My OneDrive
+                    "https://onebit101-my.sharepoint.com/_api/v1.0/me/files/root/children": "https://onebit101-my.sharepoint.com",
                     // MS Graph API
                     'https://graph.microsoft.com/v1.0/me': 'https://graph.microsoft.com/'
                 },
-                baseSPUrl: 'https://cand3.sharepoint.com/sites/ChadDev/ExpenseApp/_api/',
-                baseOneDriveUrl: 'https://graph.microsoft.com/v1.0/me',
+                baseSPUrl: 'https://onebit101.sharepoint.com/sites/dev/_api/',
+                baseOneDriveUrl: 'https://onebit101-my.sharepoint.com/_api/v1.0/me/',
             };
 
             this.app.constant('adalSettings', settings);

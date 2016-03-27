@@ -79,9 +79,6 @@ gulp.task('gen-ts-refs', function () {
 
 //Lint all custom TypeScript files.
 gulp.task('ts-lint', function () {
-
-
-
     //return gulp.src(config.paths.source.angularTsFiles)
     //    .pipe(print())
     //    .pipe(tslint())

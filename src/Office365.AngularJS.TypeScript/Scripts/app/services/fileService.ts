@@ -1,25 +1,47 @@
 ﻿module Office365DemoApp.Services {
     'use strict';
 
+    export interface IHttpDataResponse extends ng.IHttpPromiseCallbackArg<any> {
+        data: any;
+    }
+
     export class FileService implements Interfaces.IFileService {
 
         files: File[];
 
-        constructor() {
-            this.files = [];
+        static $inject = ['$http','$q', 'adalSettings'];
+        getOptions = {
+            headers: {
+                'Accept': 'application/json'
+            }
+        };
 
-            //Temp data
-            let file1 = new File();
-            file1.filename = "filename1";
-            let file2 = new File();
-            file2.filename = "filename2";
-            this.files.push(file2);
-            let file3 = new File();
-            file3.filename = "filename3";
-            this.files.push(file3);
+        constructor(
+            private $http: angular.IHttpService,
+            private $q: angular.IQService,
+            private adalSettings: Interfaces.IAdalSettings)
+        {
+            this.files = [];
         }
 
         getFiles(): File[] {
+            
+            var endpoint = 'https://onebit101-my.sharepoint.com/_api/v1.0/me/files/root/children';
+
+            this.$http.get(endpoint).then((result: IHttpDataResponse) => {
+                var resultItems = result.data.value;
+
+                for (let i in resultItems) {
+                    let newFile = new File();
+                    newFile.filename = resultItems[i].name;
+                    this.files.push(newFile);
+                }
+
+            }, function(error) {
+                console.log(error);
+                alert(error);
+            });
+
             return this.files;
         }
     }

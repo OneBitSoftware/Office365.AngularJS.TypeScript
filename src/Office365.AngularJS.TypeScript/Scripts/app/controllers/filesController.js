@@ -7,13 +7,13 @@ var Office365DemoApp;
         var FilesController = (function () {
             function FilesController(injectedFilesService) {
                 var _this = this;
+                this.injectedFilesService = injectedFilesService;
                 this.getFiles = function () {
                     //cal the service to get data
-                    _this.files = _this.filesService.getFiles();
+                    _this.files = _this.injectedFilesService.getFiles();
                     //data bind the grid to the results
                     _this.gridOptions.data = _this.files;
                 };
-                this.filesService = injectedFilesService;
                 this.gridOptions = {
                     columnDefs: [
                         { field: 'filename' }

@@ -6,7 +6,7 @@
                 {
                     tenant: adalSettings.tenant,
                     clientId: adalSettings.clientId,
-                    postLogoutRedirectUri: 'http://localhost:8000',
+                    postLogoutRedirectUri: 'http://localhost:5000',
                     endpoints: adalSettings.azureAdEndpoints,
                     requireADLogin: true
                 },

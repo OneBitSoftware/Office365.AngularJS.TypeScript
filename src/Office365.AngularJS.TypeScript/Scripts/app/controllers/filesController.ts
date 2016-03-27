@@ -6,13 +6,11 @@ module Office365DemoApp.Controllers {
     export class FilesController {
 
         public  files:          File[];
-        private filesService:   Interfaces.IFileService;
         public  gridOptions:    uiGrid.IGridOptions;
 
         static $inject = ['fileService'];
 
-        constructor(injectedFilesService: Interfaces.IFileService) {
-            this.filesService = injectedFilesService;
+        constructor(private injectedFilesService: Interfaces.IFileService) {
             this.gridOptions = {
                 columnDefs: [
                     { field: 'filename' }
@@ -22,7 +20,7 @@ module Office365DemoApp.Controllers {
 
         getFiles = () => {
             //cal the service to get data
-            this.files = this.filesService.getFiles();
+            this.files = this.injectedFilesService.getFiles();
 
             //data bind the grid to the results
             this.gridOptions.data = this.files;

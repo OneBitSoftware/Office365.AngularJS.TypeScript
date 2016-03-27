@@ -7,8 +7,9 @@ var Office365DemoApp;
             adalProvider.init({
                 tenant: adalSettings.tenant,
                 clientId: adalSettings.clientId,
-                postLogoutRedirectUri: 'http://localhost:8000',
-                endpoints: adalSettings.azureAdEndpoints
+                postLogoutRedirectUri: 'http://localhost:5000',
+                endpoints: adalSettings.azureAdEndpoints,
+                requireADLogin: true
             }, $httpProvider);
         };
         return AdalManager;
