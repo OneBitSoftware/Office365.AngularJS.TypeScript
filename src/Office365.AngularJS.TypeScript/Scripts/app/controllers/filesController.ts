@@ -1,5 +1,4 @@
-﻿///<reference path="../../../typings/browser/ambient/ui-grid/ui-grid.d.ts" />
-
+﻿
 module Office365DemoApp.Controllers {
     'use strict';
 
